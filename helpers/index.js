@@ -1,27 +1,20 @@
-const getAccountsAsync = (client, usernames) => new Promise((resolve, reject) => {
-  client.send('get_accounts', [usernames], function(err, result) {
-    if (err !== null) reject(err);
-    resolve(result);
-  });
-});
-
-const getAvatarURL = (username) => {
+const getAvatarURL = (username, small = false) => {
+  const size = (small) ? 64 : 128;
   switch (username.charCodeAt(0) % 10) {
-    case 0: return 'https://res.cloudinary.com/hpiynhbhq/image/upload/v1506948446/hv6vfwoxxrhbo5hqrr67.png';
-    case 1: return 'https://res.cloudinary.com/hpiynhbhq/image/upload/v1506948446/odivdmixxlgcjzu5kwo5.png';
-    case 2: return 'https://res.cloudinary.com/hpiynhbhq/image/upload/v1506948446/apwiydegsm9xkl8dwlg6.png';
-    case 3: return 'https://res.cloudinary.com/hpiynhbhq/image/upload/v1506948446/a5z6ptacnxwtmlmiutru.png';
-    case 4: return 'https://res.cloudinary.com/hpiynhbhq/image/upload/v1506948779/waualh2u8cin8rtntp3x.png';
-    case 5: return 'https://res.cloudinary.com/hpiynhbhq/image/upload/v1506948446/ybg6j4rmwnfsp0lzpfew.png';
-    case 6: return 'https://res.cloudinary.com/hpiynhbhq/image/upload/v1506948446/dprtnd1unvjknhjmppix.png';
-    case 7: return 'https://res.cloudinary.com/hpiynhbhq/image/upload/v1506948447/tcpwoh6ej18rtd4bjsqa.png';
-    case 8: return 'https://res.cloudinary.com/hpiynhbhq/image/upload/v1506948447/p72avlprkfariyti7q2l.png';
-    case 9: return 'https://res.cloudinary.com/hpiynhbhq/image/upload/v1506948447/kmhouzmhi7nc2o2xcrsr.png';
-    default: return 'https://res.cloudinary.com/hpiynhbhq/image/upload/v1506948447/p72avlprkfariyti7q2l.png';
+    case 0: return `https://steemit-production-imageproxy-thumbnail.s3.amazonaws.com/U5drQkCJrtNW2UJ6vUb2QJFGzesizcu_${size}x${size}`;
+    case 1: return `https://steemit-production-imageproxy-thumbnail.s3.amazonaws.com/U5dsBRP49BF9M5FdChQYcrz2sEygN1F_${size}x${size}`;
+    case 2: return `https://steemit-production-imageproxy-thumbnail.s3.amazonaws.com/U5dtiQDT29HaS1HTdFXNdHKcLL3TbdA_${size}x${size}`;
+    case 3: return `https://steemit-production-imageproxy-thumbnail.s3.amazonaws.com/U5dsrAupu7M8t2rNRXqzszbiQzKr3HE_${size}x${size}`;
+    case 4: return `https://steemit-production-imageproxy-thumbnail.s3.amazonaws.com/U5dsrVCxBQGNRj1hgtrubxSQvj6redg_${size}x${size}`;
+    case 5: return `https://steemit-production-imageproxy-thumbnail.s3.amazonaws.com/U5duEeDJxUqerVKadM7XXun2DEyfqWW_${size}x${size}`;
+    case 6: return `https://steemit-production-imageproxy-thumbnail.s3.amazonaws.com/U5dsx9Kt4J7DxnF9TUoGRzmcF4BERt4_${size}x${size}`;
+    case 7: return `https://steemit-production-imageproxy-thumbnail.s3.amazonaws.com/U5ds1P874U1tWM9jtC37XNxTNxc8Dxf_${size}x${size}`;
+    case 8: return `https://steemit-production-imageproxy-thumbnail.s3.amazonaws.com/U5dtuCEcc2F5B36fuGXSBfc4QHonQsD_${size}x${size}`;
+    case 9: return `https://steemit-production-imageproxy-thumbnail.s3.amazonaws.com/U5dsAU5Q3Wt7WvNg9axvL7jnwp5T5qe_${size}x${size}`;
+    default: return `https://steemit-production-imageproxy-thumbnail.s3.amazonaws.com/U5dtuCEcc2F5B36fuGXSBfc4QHonQsD_${size}x${size}`;
   }
 };
 
 module.exports = {
   getAvatarURL,
-  getAccountsAsync,
 };
